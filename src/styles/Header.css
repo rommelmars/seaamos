@@ -129,6 +129,17 @@
   opacity: 1;
 }
 
+/* Styling for active navigation link */
+.nav-link.active {
+  color: #2ecc71;
+  font-weight: 600;
+}
+
+.nav-link.active:before {
+  transform: scaleY(1);
+  opacity: 0.5;
+}
+
 /* Hamburger button styles */
 .hamburger {
   display: none;

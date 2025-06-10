@@ -1,0 +1,385 @@
+/* General Styles */
+.services-page {
+  overflow-x: hidden;
+}
+
+/* Hero Section */
+.services-hero {
+  background: linear-gradient(rgba(33, 59, 46, 0.80), rgba(39, 174, 96, 0.80)), 
+              url('../images/hero.jpg') no-repeat center center;
+  background-size: cover;
+  padding: 180px 0;
+  color: #fff;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.services-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.03) 70%, #f9f9f9);
+  pointer-events: none;
+}
+
+.services-hero-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+}
+
+.services-hero h1 {
+  font-size: 4.2rem;
+  margin-bottom: 1.5rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  line-height: 1.2;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.4s ease-out, transform 1.4s ease-out;
+}
+
+/* Hero Animation */
+.services-hero.animate .services-hero-container {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.2s;
+}
+
+.services-hero.animate h1 {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.4s;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Services Section */
+.services-section {
+  padding: 100px 0;
+  background-color: #f9f9f9;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  color: #213b2e;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.separator {
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(to right, #213b2e, #27ae60);
+  margin: 0 auto 2rem;
+}
+
+.section-description {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #555;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 4rem;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+/* Service Card */
+.service-card {
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  transform: translateY(30px);
+  will-change: transform, opacity;
+  display: flex;
+  flex-direction: column; /* Make the card a flex container */
+  height: 100%; /* Ensure all cards have the same height */
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.service-card.animate {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.service-image {
+  height: 200px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8f8f8;
+}
+
+.service-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* This preserves aspect ratio while filling the container */
+  transition: transform 0.5s ease;
+}
+
+/* Optional: Add these styles for more control over image size */
+.service-card:first-child .service-image img {
+  /* Special styling for the VA image if needed */
+  object-fit: contain; /* This ensures the entire image is visible */
+  padding: 10px;
+  max-height: 90%;
+  max-width: 90%;
+}
+
+.service-content {
+  padding: 25px 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Allow content area to expand */
+  text-align: center; /* Center all text content */
+}
+
+/* Update paragraph style for variable content */
+.service-content p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #666;
+  margin-bottom: 1.5rem;
+  flex-grow: 1; /* Allows content to expand */
+}
+
+/* Center the heading too */
+.service-content h3 {
+  font-size: 1.4rem;
+  color: #213b2e;
+  margin: 1.5rem 0 1rem;
+  text-align: center;
+}
+
+/* Button Container for consistent positioning */
+.button-container {
+  margin-top: auto; /* Push to bottom */
+  padding-bottom: 20px; /* Consistent space at bottom */
+  text-align: center; /* Center the button */
+}
+
+/* Update button styling */
+.learn-more-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background: transparent;
+  color: #27ae60;
+  border: 2px solid #27ae60;
+  border-radius: 4px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  align-self: center; /* Center the button horizontally */
+  margin-top: auto; /* Push button to bottom */
+  margin-bottom: 15px; /* Add some space at bottom */
+}
+
+/* Add hover effect */
+.learn-more-btn:hover {
+  background: #27ae60;
+  color: white;
+}
+
+/* Adjust the service icon position for centered layout */
+.service-icon {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(-45deg, #213b2e, #27ae60);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+  position: absolute;
+  top: -30px;
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Perfect centering */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.cta-section {
+  padding: 80px 0;
+  background: linear-gradient(45deg, #213b2e, #27ae60);
+  color: #fff;
+  text-align: center;
+}
+
+.cta-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.cta-section p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 15px 30px;
+  background: #fff;
+  color: #213b2e;
+  border-radius: 4px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Animation delay for staggered card appearance */
+.service-card:nth-child(3n+1) {
+  transition-delay: 0.1s;
+}
+
+.service-card:nth-child(3n+2) {
+  transition-delay: 0.3s;
+}
+
+.service-card:nth-child(3n+3) {
+  transition-delay: 0.5s;
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 992px) {
+  .services-hero {
+    padding: 150px 0;
+  }
+  
+  .services-hero h1 {
+    font-size: 3.5rem;
+  }
+  
+  .section-title {
+    font-size: 2.2rem;
+  }
+  
+  .cta-section h2 {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .services-hero {
+    padding: 120px 0;
+  }
+  
+  .services-hero h1 {
+    font-size: 2.8rem;
+  }
+  
+  .services-section {
+    padding: 70px 0;
+  }
+  
+  .service-content {
+    min-height: 240px; /* Slightly shorter on mobile */
+  }
+  
+  .learn-more-btn {
+    padding: 8px 16px; /* Slightly smaller button on mobile */
+  }
+  
+  /* Adjust animation delays for mobile */
+  .service-card:nth-child(n) {
+    transition-delay: 0.1s;
+  }
+}
+
+@media (max-width: 576px) {
+  .services-hero {
+    padding: 100px 0;
+  }
+  
+  .services-hero h1 {
+    font-size: 2.2rem;
+  }
+  
+  .section-title {
+    font-size: 1.8rem;
+  }
+  
+  .section-description {
+    font-size: 1rem;
+  }
+  
+  .cta-section h2 {
+    font-size: 1.8rem;
+  }
+  
+  .cta-section p {
+    font-size: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .services-hero-container,
+  .services-hero h1,
+  .service-card {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+  
+  .service-card:hover {
+    transform: none;
+  }
+  
+  .service-image img {
+    transition: none;
+  }
+  
+  .service-card:hover .service-image img {
+    transform: none;
+  }
+}

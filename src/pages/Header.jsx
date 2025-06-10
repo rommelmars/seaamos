@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import '../styles/Header.css';
 import logo from '../images/logo.png';
 
@@ -6,6 +7,7 @@ import logo from '../images/logo.png';
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
   
   // Toggle mobile menu
   const toggleMenu = () => {
@@ -47,7 +49,9 @@ const Header = () => {
     <header className={`header ${scrolled ? 'scrolled' : ''}`}>
       <div className="header-container">
         <div className="logo">
-          <img src={logo} alt="Alliance Logo" />
+          <Link to="/">
+            <img src={logo} alt="Sea Amos Logo" />
+          </Link>
         </div>
         
         {/* Hamburger button for mobile */}
@@ -60,9 +64,33 @@ const Header = () => {
         {/* Navigation menu */}
         <nav className={`nav ${isOpen ? 'active' : ''}`}>
           <ul className="nav-menu">
-            <li><a href="#home" className="nav-link" onClick={closeMenu}>Home</a></li>
-            <li><a href="#about" className="nav-link" onClick={closeMenu}>About Us</a></li>
-            <li><a href="#services" className="nav-link" onClick={closeMenu}>Services</a></li>
+            <li>
+              <Link 
+                to="/" 
+                className={`nav-link ${location.pathname === '/' ? 'active' : ''}`}
+                onClick={closeMenu}
+              >
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link 
+                to="/about" 
+                className={`nav-link ${location.pathname === '/about' ? 'active' : ''}`}
+                onClick={closeMenu}
+              >
+                About Us
+              </Link>
+            </li>
+            <li>
+              <Link 
+                to="/services" 
+                className={`nav-link ${location.pathname === '/services' ? 'active' : ''}`}
+                onClick={closeMenu}
+              >
+                Services
+              </Link>
+            </li>
             <li><a href="#testimonials" className="nav-link" onClick={closeMenu}>Testimonials</a></li>
             <li><a href="#events" className="nav-link" onClick={closeMenu}>Events</a></li>
             <li><a href="#contact" className="nav-link" onClick={closeMenu}>Contact Us</a></li>

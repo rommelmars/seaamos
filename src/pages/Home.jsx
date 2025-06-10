@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import '../styles/Home.css';
+import Header from './Header'; // Add this import
 import Footer from './Footer';
 import welcomeImage from '../images/welcome.jpg';
 import servicesImage from '../images/services.png';
@@ -100,6 +101,9 @@ const Home = () => {
 
   return (
     <div className="home">
+      {/* Add Header component here */}
+      <Header />
+      
       {/* Hero Section with Zoom Animation */}
       <section className="hero" ref={heroRef}>
         <div className="hero-background"></div>

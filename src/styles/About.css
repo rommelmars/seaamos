@@ -1,0 +1,585 @@
+.about-page {
+  padding-top: 80px; /* Adjust based on your header height */
+  background-color: #fff;
+}
+
+.about-hero {
+  background: linear-gradient(rgba(33, 59, 46, 0.80), rgba(39, 174, 96, 0.80)), 
+              url('../images/hero.jpg') no-repeat center center;
+  background-size: cover;
+  padding: 180px 0;
+  color: #fff;
+  text-align: center;
+  position: relative;
+  overflow: hidden; /* Keep animations contained */
+}
+
+/* Hero animation states - Fixed */
+.about-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+  z-index: 1;
+}
+
+.about-hero-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+}
+
+.about-hero .hero-title {
+  font-size: 4.2rem;
+  margin-bottom: 1.5rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  line-height: 1.2;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.4s ease-out, transform 1.4s ease-out;
+}
+
+/* Animated state - Fixed to stop floating */
+.about-hero.animate::before {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.about-hero.animate .about-hero-container {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.2s;
+}
+
+.about-hero.animate .hero-title {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.4s;
+}
+
+/* Remove the breadcrumb section completely */
+.breadcrumb {
+  display: none; /* This hides the breadcrumb navigation */
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* About Company Section */
+.about-company {
+  padding: 100px 0;
+  background-color: #f9f9f9;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.about-content h2 {
+  font-size: 2.5rem;
+  color: #213b2e;
+  margin-bottom: 1.5rem;
+}
+
+.separator {
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(to right, #213b2e, #27ae60);
+  margin-bottom: 2rem;
+}
+
+.about-content p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+.about-image {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* About Image - Remove the green border */
+/* .about-image::before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  bottom: 20px;
+  left: 20px;
+  border: 2px solid #27ae60;
+  z-index: 1;
+  opacity: 0.7;
+  border-radius: 4px;
+} */
+
+.about-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.about-image:hover img {
+  transform: scale(1.05);
+}
+
+/* Mission Section */
+.mission-section {
+  padding: 100px 0;
+  background-color: #fff;
+}
+
+.mission-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.mission-image {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  /* Remove the padding that was creating the border */
+  /* padding: 15px; - REMOVED */
+  background-color: #fff;
+}
+
+.mission-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+  border-radius: 8px; /* Match the container's border radius */
+}
+
+.mission-image:hover img {
+  transform: scale(1.05);
+}
+
+.mission-content {
+  text-align: left; /* Align text to the left */
+}
+
+.mission-content h2 {
+  font-size: 2.5rem;
+  color: #213b2e;
+  margin-bottom: 1.5rem;
+}
+
+.mission-content .separator {
+  margin-bottom: 2rem;
+  /* No auto margins since we want left alignment */
+}
+
+.mission-content p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+/* Values Section */
+.values-section {
+  padding: 100px 0;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+.values-section h2 {
+  font-size: 2.5rem;
+  color: #213b2e;
+  margin-bottom: 1.5rem;
+}
+
+.values-section .separator {
+  margin: 0 auto 3rem;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.value-card {
+  background-color: #fff;
+  padding: 2.5rem 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out, box-shadow 0.3s ease, transform 0.3s ease;
+  will-change: opacity, transform;
+}
+
+.value-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.value-card.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.value-icon {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 1.5rem;
+  background: linear-gradient(-45deg, #213b2e, #309259);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.8rem;
+}
+
+.value-card h3 {
+  font-size: 1.5rem;
+  color: #213b2e;
+  margin-bottom: 1rem;
+}
+
+.value-card p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #666;
+}
+
+/* Vision Section - Updated with grid layout and left align */
+.vision-section {
+  padding: 100px 0;
+  background-color: #f0f9f4;
+  position: relative;
+  overflow: hidden;
+}
+
+.vision-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(46, 204, 113, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.vision-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.vision-content {
+  text-align: left;
+}
+
+.vision-content h2 {
+  font-size: 2.5rem;
+  color: #213b2e;
+  margin-bottom: 1.5rem;
+}
+
+.vision-content .separator {
+  margin-bottom: 2rem;
+  /* No auto margins since we want left alignment */
+}
+
+.vision-content p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+.vision-image {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  /* Remove the padding that was creating the border */
+  /* padding: 15px; - REMOVED */
+  background-color: #fff;
+}
+
+.vision-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+  border-radius: 8px; /* Match the container's border radius */
+}
+
+.vision-image:hover img {
+  transform: scale(1.05);
+}
+
+/* Animation classes - Optimized for more precise triggering */
+.slide-right {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  will-change: opacity, transform; /* Performance optimization hint */
+  transition-delay: 0.1s; /* Slight delay to ensure animation is noticeable */
+}
+
+.slide-left {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  will-change: opacity, transform;
+  transition-delay: 0.3s; /* Slightly longer delay for staggered effect */
+}
+
+/* When parent element gets the 'animate' class, animate the children */
+.about-company.animate .slide-right,
+.about-company.animate .slide-left {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Section animations - Adjusted to ensure they trigger at the right moment */
+.mission-section, .vision-section, .values-section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  will-change: opacity, transform;
+}
+
+.mission-section.animate, .vision-section.animate, .values-section.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive animation adjustments */
+@media (max-width: 992px) {
+  /* Adjust animation distance for medium screens */
+  .slide-right {
+    transform: translateX(-30px);
+  }
+  
+  .slide-left {
+    transform: translateX(30px);
+  }
+  
+  .mission-section, .vision-section, .values-section {
+    transform: translateY(20px);
+  }
+  
+  /* Reduce animation delay for better UX on smaller screens */
+  .about-company.animate .slide-left {
+    transition-delay: 0.2s;
+  }
+  
+  /* Reduce the stagger delay between value cards */
+  .values-section.animate .value-card:nth-child(1) { transition-delay: 0.05s; }
+  .values-section.animate .value-card:nth-child(2) { transition-delay: 0.1s; }
+  .values-section.animate .value-card:nth-child(3) { transition-delay: 0.15s; }
+  .values-section.animate .value-card:nth-child(4) { transition-delay: 0.2s; }
+}
+
+@media (max-width: 768px) {
+  /* Smaller animation distance for mobile */
+  .slide-right, .slide-left {
+    transform: translateX(0);
+    transform: translateY(20px); /* Switch to vertical animation for better mobile experience */
+  }
+  
+  .about-company.animate .slide-right,
+  .about-company.animate .slide-left {
+    transform: translateY(0);
+  }
+  
+  /* Even smaller animation for mission/vision sections */
+  .mission-section, .vision-section, .values-section {
+    transform: translateY(15px);
+  }
+  
+  /* Faster animations on mobile for better UX */
+  .slide-right, .slide-left, 
+  .mission-section, .vision-section, .values-section,
+  .values-grid .value-card {
+    transition-duration: 0.6s;
+  }
+  
+  /* Minimal delay on mobile */
+  .about-company.animate .slide-left {
+    transition-delay: 0.1s;
+  }
+  
+  /* Minimal stagger for value cards on mobile */
+  .values-section.animate .value-card:nth-child(n) {
+    transition-delay: 0.05s;
+  }
+}
+
+/* Respect user preference for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .slide-right,
+  .slide-left,
+  .mission-section,
+  .vision-section,
+  .values-section,
+  .values-grid .value-card {
+    transition: none;
+    opacity: 1;
+    transform: none;
+    transition-delay: 0s;
+  }
+  
+  .values-section.animate .value-card:nth-child(n) {
+    transition-delay: 0s;
+  }
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+  .about-grid,
+  .mission-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  
+  .about-image,
+  .mission-image {
+    order: -1;
+  }
+  
+  .mission-content {
+    text-align: center;
+  }
+  
+  .mission-content .separator {
+    margin: 0 auto 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-hero {
+    padding: 80px 0;
+  }
+  
+  .about-hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .about-company,
+  .mission-section,
+  .values-section,
+  .vision-section {
+    padding: 70px 0;
+  }
+  
+  .about-content h2,
+  .mission-content h2,
+  .values-section h2,
+  .vision-content h2 {
+    font-size: 2rem;
+  }
+  
+  .about-content p,
+  .mission-content p,
+  .vision-content p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .values-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .about-hero h1 {
+    font-size: 2rem;
+  }
+  
+  .separator {
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* Responsive adjustments for hero animation */
+@media (max-width: 992px) {
+  .about-hero {
+    padding: 150px 0;
+  }
+  
+  .about-hero .hero-title {
+    font-size: 3.5rem;
+  }
+  
+  .about-hero-container {
+    transform: translateY(20px);
+  }
+}
+
+@media (max-width: 768px) {
+  .about-hero {
+    padding: 120px 0;
+  }
+  
+  .about-hero .hero-title {
+    font-size: 2.8rem;
+    transform: translateY(15px);
+  }
+}
+
+@media (max-width: 576px) {
+  .about-hero {
+    padding: 100px 0;
+  }
+  
+  .about-hero .hero-title {
+    font-size: 2.2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-hero::before,
+  .about-hero-container,
+  .about-hero .hero-title {
+    transition: none;
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
