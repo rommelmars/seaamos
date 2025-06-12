@@ -4,6 +4,8 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
 import Fulfillment from './pages/Fulfillment';
+import Testimonials from './pages/Testimonials';
+import Events from './pages/Events'; // Import the new Events component
 import './App.css';
 
 function App() {
@@ -15,6 +17,8 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
           <Route path="/service-fulfillment" element={<Fulfillment />} />
+          <Route path="/testimonials" element={<Testimonials />} />
+          <Route path="/events" element={<Events />} /> {/* Add route for Events page */}
         </Routes>
       </Router>
     </div>

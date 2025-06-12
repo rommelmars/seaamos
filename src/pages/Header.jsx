@@ -91,8 +91,24 @@ const Header = () => {
                 Services
               </Link>
             </li>
-            <li><a href="#testimonials" className="nav-link" onClick={closeMenu}>Testimonials</a></li>
-            <li><a href="#events" className="nav-link" onClick={closeMenu}>Events</a></li>
+            <li>
+              <Link 
+                to="/testimonials" 
+                className={`nav-link ${location.pathname === '/testimonials' ? 'active' : ''}`}
+                onClick={closeMenu}
+              >
+                Testimonials
+              </Link>
+            </li>
+            <li>
+              <Link 
+                to="/events" 
+                className={`nav-link ${location.pathname === '/events' ? 'active' : ''}`}
+                onClick={closeMenu}
+              >
+                Events
+              </Link>
+            </li>
             <li><a href="#contact" className="nav-link" onClick={closeMenu}>Contact Us</a></li>
           </ul>
         </nav>
