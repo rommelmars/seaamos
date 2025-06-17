@@ -667,55 +667,90 @@
 .events-newsletter {
   padding: 80px 0;
   background: linear-gradient(135deg, #f9f9f9, #f1f1f1);
+  position: relative;
+  overflow: hidden; /* Important to contain the particles */
 }
 
 .newsletter-content {
   max-width: 700px;
   margin: 0 auto;
   text-align: center;
+  position: relative;
+  z-index: 2; /* Keep content above particles */
 }
 
-.newsletter-content h2 {
-  font-size: 2rem;
-  color: #213b2e;
-  margin-bottom: 15px;
-}
-
-.newsletter-content p {
-  font-size: 1.1rem;
-  color: #555;
-  margin-bottom: 30px;
-}
-
-.newsletter-form {
-  display: flex;
-  max-width: 500px;
-  margin: 0 auto;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-  border-radius: 50px;
-  overflow: hidden;
-}
-
-.newsletter-form input {
-  flex-grow: 1;
-  padding: 15px 25px;
-  border: none;
-  font-size: 1rem;
-  outline: none;
-}
-
-.newsletter-form button {
-  background: #2ecc71;
-  color: white;
-  border: none;
-  padding: 15px 30px;
-  font-weight: 600;
+/* Remove particle effects from button since we're moving them to the section */
+.get-started-button {
+  color: #fff;
+  padding: 18px 30px;
+  background-color: #2ecc71;
+  background-image: radial-gradient(93% 87% at 87% 89%, rgba(0, 0, 0, 0.23) 0%, transparent 86.18%), 
+                   radial-gradient(66% 66% at 26% 20%, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 69.79%, rgba(255, 255, 255, 0) 100%);
+  box-shadow: inset -3px -3px 9px rgba(255, 255, 255, 0.25), 
+              inset 0px 3px 9px rgba(255, 255, 255, 0.3), 
+              inset 0px 1px 1px rgba(255, 255, 255, 0.6), 
+              inset 0px -8px 36px rgba(0, 0, 0, 0.3), 
+              inset 0px 1px 5px rgba(255, 255, 255, 0.6), 
+              2px 19px 31px rgba(0, 0, 0, 0.2);
+  border-radius: 14px;
+  font-weight: bold;
+  font-size: 18px;
+  border: 0;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
   cursor: pointer;
-  transition: background 0.3s ease;
+  position: relative;
+  transition: all 0.4s ease;
+  min-width: 220px;
+  z-index: 2;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 20px;
+  overflow: hidden; /* Changed from visible to hidden */
 }
 
-.newsletter-form button:hover {
-  background: #27ae60;
+.get-started-button:hover {
+  transform: translateY(-3px);
+}
+
+/* Section-wide particles container */
+.newsletter-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.newsletter-particles.active {
+  opacity: 1;
+}
+
+/* Style for the section-wide particles */
+.section-particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #7fffd4; /* Light green particles */
+  border-radius: 50%;
+  opacity: 0;
+  box-shadow: 0 0 10px rgba(127, 255, 212, 0.7);
+}
+
+/* Animation for section particles */
+@keyframes sectionParticleFloat {
+  0% { transform: translate(0, 0) scale(0); opacity: 0; }
+  25% { transform: translate(calc(var(--x) * 0.25), calc(var(--y) * 0.25)) scale(0.5); opacity: 0.5; }
+  50% { transform: translate(calc(var(--x) * 0.5), calc(var(--y) * 0.5)) scale(1); opacity: 1; }
+  75% { transform: translate(calc(var(--x) * 0.75), calc(var(--y) * 0.75)) scale(0.5); opacity: 0.5; }
+  100% { transform: translate(var(--x), var(--y)) scale(0); opacity: 0; }
 }
 
 /* Event Details Section */
@@ -985,4 +1020,164 @@
     justify-content: center;
     padding: 14px 20px;
   }
+}
+
+/* Updated Get Started button to match Home.jsx styling */
+.get-started-button {
+  color: #fff;
+  padding: 18px 30px;
+  background-color: #2ecc71;
+  background-image: radial-gradient(93% 87% at 87% 89%, rgba(0, 0, 0, 0.23) 0%, transparent 86.18%), 
+                   radial-gradient(66% 66% at 26% 20%, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 69.79%, rgba(255, 255, 255, 0) 100%);
+  box-shadow: inset -3px -3px 9px rgba(255, 255, 255, 0.25), 
+              inset 0px 3px 9px rgba(255, 255, 255, 0.3), 
+              inset 0px 1px 1px rgba(255, 255, 255, 0.6), 
+              inset 0px -8px 36px rgba(0, 0, 0, 0.3), 
+              inset 0px 1px 5px rgba(255, 255, 255, 0.6), 
+              2px 19px 31px rgba(0, 0, 0, 0.2);
+  border-radius: 14px;
+  font-weight: bold;
+  font-size: 18px;
+  border: 0;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  cursor: pointer;
+  position: relative;
+  overflow: visible;
+  transition: all 0.4s ease;
+  min-width: 220px;
+  z-index: 1;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Add particle effects */
+.get-started-button {
+  position: relative;
+  overflow: visible;
+}
+
+.get-started-button:hover {
+  transform: translateY(-3px);
+}
+
+/* Add the particles field for the button */
+.particles-field {
+  position: absolute;
+  inset: -100%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #7fffd4; /* Light green particles */
+  border-radius: 50%;
+}
+
+@keyframes particleFloat {
+  0% { transform: translate(var(--x), var(--y)) scale(0); opacity: 0; }
+  50% { transform: translate(calc(var(--x) * -1), calc(var(--y) * -1)) scale(1); opacity: 1; }
+  100% { transform: translate(var(--x), var(--y)) scale(0); opacity: 0; }
+}
+
+.get-started-button:hover .particles-field {
+  opacity: 1;
+}
+
+/* Updated Newsletter Section with particle effects across the whole section */
+.events-newsletter {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #f9f9f9, #f1f1f1);
+  position: relative;
+  overflow: hidden; /* Important to contain the particles */
+}
+
+.newsletter-content {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 2; /* Keep content above particles */
+}
+
+/* Remove particle effects from button since we're moving them to the section */
+.get-started-button {
+  color: #fff;
+  padding: 18px 30px;
+  background-color: #2ecc71;
+  background-image: radial-gradient(93% 87% at 87% 89%, rgba(0, 0, 0, 0.23) 0%, transparent 86.18%), 
+                   radial-gradient(66% 66% at 26% 20%, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 69.79%, rgba(255, 255, 255, 0) 100%);
+  box-shadow: inset -3px -3px 9px rgba(255, 255, 255, 0.25), 
+              inset 0px 3px 9px rgba(255, 255, 255, 0.3), 
+              inset 0px 1px 1px rgba(255, 255, 255, 0.6), 
+              inset 0px -8px 36px rgba(0, 0, 0, 0.3), 
+              inset 0px 1px 5px rgba(255, 255, 255, 0.6), 
+              2px 19px 31px rgba(0, 0, 0, 0.2);
+  border-radius: 14px;
+  font-weight: bold;
+  font-size: 18px;
+  border: 0;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.4s ease;
+  min-width: 220px;
+  z-index: 2;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 20px;
+  overflow: hidden; /* Changed from visible to hidden */
+}
+
+.get-started-button:hover {
+  transform: translateY(-3px);
+}
+
+/* Section-wide particles container */
+.newsletter-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.newsletter-particles.active {
+  opacity: 1;
+}
+
+/* Style for the section-wide particles */
+.section-particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #7fffd4; /* Light green particles */
+  border-radius: 50%;
+  opacity: 0;
+  box-shadow: 0 0 10px rgba(127, 255, 212, 0.7);
+}
+
+/* Animation for section particles */
+@keyframes sectionParticleFloat {
+  0% { transform: translate(0, 0) scale(0); opacity: 0; }
+  25% { transform: translate(calc(var(--x) * 0.25), calc(var(--y) * 0.25)) scale(0.5); opacity: 0.5; }
+  50% { transform: translate(calc(var(--x) * 0.5), calc(var(--y) * 0.5)) scale(1); opacity: 1; }
+  75% { transform: translate(calc(var(--x) * 0.75), calc(var(--y) * 0.75)) scale(0.5); opacity: 0.5; }
+  100% { transform: translate(var(--x), var(--y)) scale(0); opacity: 0; }
 }

@@ -1,25 +1,47 @@
 import React, { useEffect, useRef } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import '../styles/Home.css';
-import Header from './Header'; // Add this import
+import Header from './Header';
 import Footer from './Footer';
 import welcomeImage from '../images/welcome.jpg';
 import servicesImage from '../images/services.png';
-import byopImage from '../images/byop.png';
-import trailerImage from '../images/trailer.png';
-import smmImage from '../images/smm.png';
+import byopImage from '../images/byop1.png';
+import trailerImage from '../images/trailer1.png';
+import smmImage from '../images/smm1.png';
 
 const Home = () => {
   const welcomeRef = useRef(null);
   const servicesRef = useRef(null);
-  const heroRef = useRef(null);
+  const heroSectionRef = useRef(null);
+  const navigate = useNavigate(); // Initialize useNavigate
+  
+  // Handle navigation to contact page
+  const handleContactClick = () => {
+    navigate('/contact');
+  };
+  
+  // Handle navigation to about page
+  const handleAboutClick = (e) => {
+    e.preventDefault(); // Prevent default anchor behavior
+    navigate('/about'); // Navigate to about page
+  };
+  
+  // Handle navigation to services page
+  const handleServicesClick = (e) => {
+    e.preventDefault(); // Prevent default anchor behavior
+    navigate('/services'); // Navigate to services page
+  };
   
   useEffect(() => {
-    // Add zoom-out animation class to hero section when component mounts
-    if (heroRef.current) {
-      setTimeout(() => {
-        heroRef.current.classList.add('hero-animated');
-      }, 100); // Short delay to ensure animation triggers after page load
-    }
+    // Scroll to top when page loads
+    window.scrollTo(0, 0);
+    
+    // Add hero animation
+    setTimeout(() => {
+      if (heroSectionRef.current) {
+        heroSectionRef.current.classList.add('animate');
+      }
+    }, 200);
     
     // Create an Intersection Observer to detect when elements enter viewport
     const observer = new IntersectionObserver((entries) => {
@@ -100,20 +122,19 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="home">
+    <div className="home-page">
       {/* Add Header component here */}
       <Header />
       
-      {/* Hero Section with Zoom Animation */}
-      <section className="hero" ref={heroRef}>
-        <div className="hero-background"></div>
-        <div className="hero-container">
-          <div className="hero-content">
-            <h1 className="hero-title masked-text">
-              Creating and empowering your brand with our marketing magic.<br />
-              Where every story has a voice.
-            </h1>
-            <button className="cta-button">
+      {/* Hero Section */}
+      <div className="home-hero" ref={heroSectionRef}>
+        <div className="home-hero-container">
+          <h1 className="hero-title">
+            Empowering Authors and Publishers<br />
+            <span>With Professional Publishing Solutions</span>
+          </h1>
+          <div className="button-container">
+            <button className="cta-button" onClick={handleContactClick}>
               Get Started
               <div className="particles-field">
                 {/* Generate 15 particles */}
@@ -134,9 +155,9 @@ const Home = () => {
             </button>
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* Welcome Section with Animation */}
+      {/* Welcome Section with Animation - Updated for text visibility */}
       <section className="welcome" ref={welcomeRef}>
         <div className="container">
           <div className="welcome-content">
@@ -145,11 +166,11 @@ const Home = () => {
             </div>
             <div className="welcome-text">
               <h2 className="section-title">Sea Amos Business Center</h2>
-              <p>
+              <p style={{display: 'block', marginBottom: '1.5rem', color: '#444'}}>
                 Learn about our passionate team, our mission-driven approach, 
                 and our unwavering dedication to helping you achieve your goals.
               </p>
-              <a href="#about" className="welcome-button">
+              <a href="/about" className="welcome-button" onClick={handleAboutClick}>
                 <span></span>
                 <span></span>
                 <span></span>
@@ -170,7 +191,7 @@ const Home = () => {
               <p>
                 Explore our comprehensive range of services tailored to meet your unique needs.
               </p>
-              <a href="#services" className="welcome-button services-button">
+              <a href="/services" className="welcome-button services-button" onClick={handleServicesClick}>
                 <span></span>
                 <span></span>
                 <span></span>
@@ -183,30 +204,37 @@ const Home = () => {
             </div>
           </div>
           
+          {/* Services Section with Animation - Updated Cards */}
           <div className="services-cards-container">
             <div className="services-grid">
               <div className="service-card">
                 <div className="service-image">
                   <img src={byopImage} alt="BYOP Program" />
                 </div>
-                <h3>BYOP Program</h3>
-                <button className="service-button">View Details →</button>
+                <div className="service-content">
+                  <h3>BYOP Program</h3>
+                  <button className="service-button" onClick={() => navigate('/services')}>View Details →</button>
+                </div>
               </div>
               
               <div className="service-card">
                 <div className="service-image">
                   <img src={trailerImage} alt="Book Trailer" />
                 </div>
-                <h3>Book Trailer</h3>
-                <button className="service-button">View Details →</button>
+                <div className="service-content">
+                  <h3>Book Trailer</h3>
+                  <button className="service-button" onClick={() => navigate('/services')}>View Details →</button>
+                </div>
               </div>
               
               <div className="service-card">
                 <div className="service-image">
                   <img src={smmImage} alt="Social Media Manager" />
                 </div>
-                <h3>Social Media Manager</h3>
-                <button className="service-button">View Details →</button>
+                <div className="service-content">
+                  <h3>Social Media Manager</h3>
+                  <button className="service-button" onClick={() => navigate('/services')}>View Details →</button>
+                </div>
               </div>
             </div>
           </div>

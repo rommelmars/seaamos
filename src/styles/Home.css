@@ -55,7 +55,7 @@ body {
   animation-delay: 0.5s; /* Start after zoom begins */
 }
 
-/* Masked text effect for hero title - Updated to white with black gradient */
+/* Updated masked text effect with green gradient */
 .masked-text {
   font-size: 4.2rem;
   font-weight: 700;
@@ -64,11 +64,9 @@ body {
   color: transparent;
   background: linear-gradient(
     to right,
-    #ffffff 0%,
-    #cccccc 25%,
-    #ffffff 50%,
-    #cccccc 75%,
-    #ffffff 100%
+    #1a6e32 0%,   /* Dark green */
+    #2ecc71 50%,  /* Light green */
+    #1a6e32 100%  /* Dark green */
   );
   background-size: 200% auto;
   background-clip: text;
@@ -82,23 +80,17 @@ body {
   color: transparent;
   background: linear-gradient(
     to right,
-    #cccccc 0%,
-    #ffffff 25%,
-    #cccccc 50%,
-    #ffffff 75%,
-    #cccccc 100%
+    #2ecc71 0%,   /* Light green */
+    #1a6e32 50%,  /* Dark green */
+    #2ecc71 100%  /* Light green */
   );
   background-size: 200% auto;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: animate-background-reverse 8s linear infinite;
-  font-weight: 900;
-}
-
-/* Remove the separate hero-subtitle since we've incorporated it into the main title */
-.hero-subtitle {
-  display: none;
+  font-weight: 600;
+  font-size: 3.2rem; /* Slightly smaller size for the subtitle */
 }
 
 @keyframes animate-background {
@@ -106,7 +98,7 @@ body {
     background-position: 0% center;
   }
   100% {
-    background-position: 200% center;
+    background-position: -200% center;
   }
 }
 
@@ -119,10 +111,18 @@ body {
   }
 }
 
-/* Updated .cta-button styles with larger size */
+/* Button container to ensure proper centering */
+.button-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+/* Updated .cta-button styles with proper centering */
 .cta-button {
   color: #fff;
-  padding: 18px 30px; /* Increased from 15px 25px */
+  padding: 18px 30px;
   background-color: #2ecc71;
   background-image: radial-gradient(93% 87% at 87% 89%, rgba(0, 0, 0, 0.23) 0%, transparent 86.18%), 
                    radial-gradient(66% 66% at 26% 20%, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 69.79%, rgba(255, 255, 255, 0) 100%);
@@ -134,7 +134,7 @@ body {
               2px 19px 31px rgba(0, 0, 0, 0.2);
   border-radius: 14px;
   font-weight: bold;
-  font-size: 18px; /* Increased from 16px */
+  font-size: 18px;
   border: 0;
   user-select: none;
   -webkit-user-select: none;
@@ -143,8 +143,12 @@ body {
   position: relative;
   overflow: visible;
   transition: all 0.4s ease;
-  min-width: 220px; /* Increased from 200px */
+  min-width: 220px;
   z-index: 1;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 /* Fix particles animation issue */
@@ -237,11 +241,23 @@ body {
 }
 
 .welcome-text p {
-  color: #666;
+  color: #444; /* Darker color for better visibility */
   line-height: 1.6;
+  font-size: 1.1rem; /* Slightly larger font size */
+  margin-bottom: 1.5rem; /* Add space below paragraph */
+  max-width: 100%; /* Ensure full width */
+  display: block; /* Ensure block display */
+  opacity: 1 !important; /* Force visibility */
 }
 
-/* Updated Welcome button with neon border effect - pure green */
+/* Fix animation that might be hiding text */
+.welcome-text.animate-fade-in,
+.welcome-text p.animate-fade-in {
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+
+/* Welcome button with neon border effect - pure green */
 .welcome-button {
   position: relative;
   display: inline-block;
@@ -384,44 +400,70 @@ body {
   gap: 1rem; /* Further reduce gap from 1.5rem to 1rem */
 }
 
+/* Updated Service Card Styles */
 .service-card {
   background: #ffffff;
-  padding: 1rem; /* Reduce padding from 1.25rem to 1rem */
+  padding: 1.5rem 1rem;
   border-radius: 8px;
   transition: all 0.3s ease;
   border-left: 4px solid #2ecc71;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
-  width: 100%; /* Ensure card takes full width of grid cell */
-  overflow: visible; /* Changed from 'hidden' to 'visible' to prevent image cropping */
+  width: 100%;
+  height: 100%;
 }
 
+/* Fixed image container for consistent display */
 .service-image {
   width: 100%;
-  height: 160px; /* Fixed height container for the image */
-  margin-bottom: 0.75rem; /* Add space between image and text */
-  overflow: hidden; /* Contain the image within this div */
-  border-radius: 4px; /* Optional: rounded corners for images */
+  height: 180px; /* Fixed height for all image containers */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  border-radius: 4px;
 }
 
 .service-image img {
   width: 100%;
   height: 100%;
-  object-fit: contain; /* Changed from 'cover' to 'contain' to show the full image */
-  object-position: center; /* Center the image */
+  object-fit: contain; /* Display the whole image without cropping */
+  object-position: center center;
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover .service-image img {
+  transform: scale(1.05);
+}
+
+/* Service content container */
+.service-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+
+.service-card h3 {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  text-align: center;
 }
 
 .service-button {
   background-color: transparent;
   color: #2ecc71;
   border: none;
-  padding: 0.5rem 0;
+  padding: 0.75rem 0 0.25rem;
   font-weight: 600;
   cursor: pointer;
   text-align: left;
   font-size: 0.9rem;
-  margin-top: auto; /* Push button to bottom of card */
+  margin-top: auto;
   transition: all 0.3s ease;
 }
 
@@ -755,5 +797,166 @@ body {
 @media (max-width: 480px) {
   .hero-animated .hero-background {
     background-size: cover; /* For very small screens, ensure full coverage */
+  }
+}
+
+/* Add these styles for the new hero section */
+
+.home-page {
+  padding-top: 80px; /* Adjust based on your header height */
+  background-color: #fff;
+}
+
+/* Hero Section - Consistent with About and Services */
+.home-hero {
+  background: linear-gradient(rgba(33, 59, 46, 0.80), rgba(39, 174, 96, 0.80)), 
+              url('../images/hero.jpg') no-repeat center center;
+  background-size: cover;
+  padding: 180px 0;
+  color: #fff;
+  text-align: center;
+  position: relative;
+  overflow: hidden; /* Keep animations contained */
+}
+
+/* Hero animation states */
+.home-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+  z-index: 1;
+}
+
+.home-hero-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+}
+
+.home-hero .hero-title {
+  font-size: 4.2rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.4s ease-out, transform 1.4s ease-out;
+  color: #ffffff; /* Solid white color */
+  text-align: center;
+  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Optional: subtle text shadow for better visibility */
+  -webkit-text-fill-color: initial; /* Remove the transparent fill for gradient */
+  background: none; /* Remove gradient background */
+  animation: none; /* Remove animation for gradient */
+}
+
+.home-hero .hero-title span {
+  color: #ffffff; /* Solid white color for span as well */
+  font-weight: 600;
+  font-size: 3.2rem; /* Slightly smaller size for the subtitle */
+  -webkit-text-fill-color: initial; /* Remove the transparent fill for gradient */
+  background: none; /* Remove gradient background */
+  animation: none; /* Remove animation for gradient */
+}
+
+/* Animated state */
+.home-hero.animate::before {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.home-hero.animate .home-hero-container {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.2s;
+}
+
+.home-hero.animate .hero-title {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.4s;
+}
+
+/* Button container */
+.button-container {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.6s ease-out, transform 1.6s ease-out;
+}
+
+.home-hero.animate .button-container {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.6s;
+}
+
+/* Make sure to maintain existing styles for rest of the page */
+
+/* Responsive hero styles */
+@media (max-width: 992px) {
+  .home-hero {
+    padding: 150px 0;
+  }
+  
+  .home-hero .hero-title {
+    font-size: 3.5rem;
+  }
+  
+  .home-hero .hero-title span {
+    font-size: 2.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-hero {
+    padding: 120px 0;
+  }
+  
+  .home-hero .hero-title {
+    font-size: 2.8rem;
+  }
+  
+  .home-hero .hero-title span {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .home-hero {
+    padding: 100px 0;
+  }
+  
+  .home-hero .hero-title {
+    font-size: 2.2rem;
+  }
+  
+  .home-hero .hero-title span {
+    font-size: 1.8rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-hero::before,
+  .home-hero-container,
+  .home-hero .hero-title,
+  .button-container {
+    transition: none;
+    animation: none;
+    opacity: 1;
+    transform: none;
   }
 }

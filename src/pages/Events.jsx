@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
 import '../styles/Events.css';
@@ -11,6 +12,12 @@ import bookFairImage from '../images/event3.png';
 const Events = () => {
   const [loading, setLoading] = useState(true);
   const heroSectionRef = useRef(null);
+  const navigate = useNavigate(); // Add this to enable navigation
+  
+  // Handle redirection to contact page
+  const handleContactRedirect = () => {
+    navigate('/contact');
+  };
 
   // Single event - Manila International Book Fair
   const eventsData = [
@@ -131,7 +138,6 @@ const Events = () => {
                   </div>
                 </div>
                 <div className="featured-event-image no-overlay">
-                  {/* Removed the overlay div that was here */}
                   <img src={featuredEvent.image} alt={featuredEvent.title} />
                 </div>
               </div>
@@ -152,10 +158,6 @@ const Events = () => {
               <h3>About the Manila International Book Fair</h3>
               <p>The Manila International Book Fair (MIBF) is the Philippines' longest-running and largest book fair. Established to promote reading awareness and book appreciation among Filipinos, it has now become the premier book event in the country.</p>
               <p>For over 40 years, MIBF has been bringing together publishers, writers, booksellers, and book lovers in a celebration of literature and the reading culture. With hundreds of exhibitors and tens of thousands of visitors each year, it's a perfect platform for authors to reach new readers.</p>
-              
-              <div className="booth-highlight">
-                <p>Sea Amos Publishing will be exhibiting at <strong>Booth #235</strong>, where we'll be showcasing our published authors and offering exclusive book signing opportunities throughout the fair.</p>
-              </div>
               
               <div className="fair-image-box">
                 <img src="https://images.unsplash.com/photo-1526721940322-10fb6e3ae94a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Book Fair" />
@@ -180,17 +182,41 @@ const Events = () => {
         </div>
       </section>
       
-      {/* Newsletter Section */}
-      <section className="events-newsletter">
+      {/* Updated Newsletter Section with full-section particle effect on hover */}
+      <section 
+        className="events-newsletter" 
+        onMouseEnter={() => document.querySelector('.newsletter-particles').classList.add('active')}
+        onMouseLeave={() => document.querySelector('.newsletter-particles').classList.remove('active')}
+      >
         <div className="container">
           <div className="newsletter-content">
-            <h2>Stay Informed About Future Events</h2>
-            <p>Subscribe to our newsletter to receive updates about upcoming events, workshops, and author opportunities</p>
-            <form className="newsletter-form">
-              <input type="email" placeholder="Enter your email address" required />
-              <button type="submit">Subscribe</button>
-            </form>
+            <h2>Ready to Join Us?</h2>
+            <p>Get in touch with our team to learn more about our services and upcoming events</p>
+            <button 
+              className="get-started-button" 
+              onClick={handleContactRedirect}
+            >
+              Get Started
+            </button>
           </div>
+        </div>
+        
+        {/* Separate particles container that covers the entire section */}
+        <div className="newsletter-particles">
+          {Array.from({ length: 30 }).map((_, i) => (
+            <span 
+              key={i} 
+              className="section-particle"
+              style={{
+                '--x': `${Math.random() * 400 - 200}px`,
+                '--y': `${Math.random() * 400 - 200}px`,
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animation: `sectionParticleFloat ${1.5 + Math.random() * 3}s linear infinite`,
+                animationDelay: `${Math.random() * 2}s`
+              }}
+            ></span>
+          ))}
         </div>
       </section>
       

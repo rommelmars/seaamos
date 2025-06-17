@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/Footer.css';
 import logo from '../images/logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -47,28 +48,28 @@ const Footer = () => {
           <div className="footer-section">
             <h4>SERVICES</h4>
             <ul className="footer-links">
-              <li><a href="#">General Virtual Assistant</a></li>
-              <li><a href="#">BYOP Program</a></li>
-              <li><a href="#">Social Media Marketing</a></li>
-              <li><a href="#">Book Trailer</a></li>
-              <li><a href="#">More Services</a></li>
+              <li><Link to="/services">General Virtual Assistant</Link></li>
+              <li><Link to="/services">BYOP Program</Link></li>
+              <li><Link to="/services">Social Media Marketing</Link></li>
+              <li><Link to="/services">Book Trailer</Link></li>
+              <li><Link to="/service-fulfillment">Service Fulfillment</Link></li>
             </ul>
           </div>
           
           <div className="footer-section">
             <h4>NAVIGATION</h4>
             <ul className="footer-links">
-              <li><a href="#">About Us</a></li>
-              <li><a href="#">Services</a></li>
-              <li><a href="#">Contact</a></li>
+              <li><Link to="/about">About Us</Link></li>
+              <li><Link to="/services">Services</Link></li>
+              <li><Link to="/contact">Contact</Link></li>
             </ul>
           </div>
           
           <div className="footer-section">
             <h4>CONTACT US</h4>
             <ul className="footer-links">
-              <li><a href="#">Call Us</a></li>
-              <li><a href="#">Email Us</a></li>
+              <li><Link to="/contact">Call Us</Link></li>
+              <li><Link to="/contact">Email Us</Link></li>
             </ul>
           </div>
         </div>

@@ -109,7 +109,15 @@ const Header = () => {
                 Events
               </Link>
             </li>
-            <li><a href="#contact" className="nav-link" onClick={closeMenu}>Contact Us</a></li>
+            <li>
+              <Link 
+                to="/contact" 
+                className={`nav-link ${location.pathname === '/contact' ? 'active' : ''}`}
+                onClick={closeMenu}
+              >
+                Contact Us
+              </Link>
+            </li>
           </ul>
         </nav>
       </div>

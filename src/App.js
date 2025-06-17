@@ -5,7 +5,8 @@ import About from './pages/About';
 import Services from './pages/Services';
 import Fulfillment from './pages/Fulfillment';
 import Testimonials from './pages/Testimonials';
-import Events from './pages/Events'; // Import the new Events component
+import Events from './pages/Events'; 
+import Contact from './pages/Contact'; // Import the new Contact component
 import './App.css';
 
 function App() {
@@ -18,7 +19,8 @@ function App() {
           <Route path="/services" element={<Services />} />
           <Route path="/service-fulfillment" element={<Fulfillment />} />
           <Route path="/testimonials" element={<Testimonials />} />
-          <Route path="/events" element={<Events />} /> {/* Add route for Events page */}
+          <Route path="/events" element={<Events />} />
+          <Route path="/contact" element={<Contact />} /> {/* Add route for Contact page */}
         </Routes>
       </Router>
     </div>
