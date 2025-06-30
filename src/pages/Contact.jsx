@@ -408,7 +408,7 @@ const Contact = () => {
             
             <div className="faq-item">
               <h3>What publishing services do you offer?</h3>
-              <p>We offer comprehensive publishing services including editing, proofreading, cover design, interior formatting, ISBN registration, and distribution to major online retailers.</p>
+              <p>We offer comprehensive publishing services including editing, proofr eading, cover design, interior formatting, ISBN registration, and distribution to major online retailers.</p>
             </div>
             
             <div className="faq-item">

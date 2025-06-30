@@ -9,7 +9,8 @@ import articaImage from '../images/artica.png';
 import jonathanImage from '../images/jonathan.png';
 import ignatiusImage from '../images/ignatius.png';
 import moralesImage from '../images/morales.png';
-import bettyImage from '../images/betty.jpeg'; // You might need to add this image file
+import bettyImage from '../images/betty.jpeg';
+import kennyImage from '../images/kenny.png'; // Added import for Kenny's image
 
 const Testimonials = () => {
   const [loading, setLoading] = useState(true);
@@ -68,6 +69,15 @@ const Testimonials = () => {
       image: bettyImage, // If you don't have this image yet, use a placeholder: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
       quote: "I would like to bring to Sea Amos management's attention the great experience I have had thus far with Sea Amos Business Solutions. They have made the transition from a do-nothing publisher to a business I can be proud of to market my children's book and, hopefully, more books in the Be Your Own Publish program. Without my Client Relations Officer, Edward Miller, I would never have gotten though all the nooks and crannies of the republishing of my book. Edward has helped to solve every problem, calm all my nerves and cheered me on. He is so patient and passionate about working with me and I believe I have made a good friend for life. I was so excited to get an interview with Kate Delaney through your program and enjoyed that wonderful experience. The work and changes to my book are so in tune with my audience of children, parents, grandparents and teachers. The illustration department did an outstanding job of portraying my animals in life-like pictures. I am so pleased that Edward made that first phone call and launched me on this path.",
       rating: 5
+    },
+    {
+      id: 7,
+      name: "Kenny Harmon",
+      position: "Author of 'Sad Papaw's Heritage'",
+      image: kennyImage,
+      quote: "Hello everyone, I'm Kenny \"Sad Papaw\" Harmon. My multiple 5 star book Sad Papaw's Heritage has recently been revised by Sea Amos Business Solutions. Belle Moore and her associates did an excellent job of creating Kenny Harmon Publishers! A woman from California said \"I love the book\" and I believe everybody that likes colonial and pioneer history will also be impressed! Sincerely Kenny Harmon",
+      rating: 5,
+      featured: true
     }
   ];
 
