@@ -25,7 +25,7 @@ const Events = () => {
       id: 1,
       title: "Manila International Book Fair",
       description: "Join us for the Manila International Book Fair showcasing works from our published authors. Meet and greet your favorite authors, attend book signings, and discover new titles from around the world. This is the Philippines' longest-running book fair and the largest event for the publishing industry with hundreds of exhibitors featuring the latest books, educational materials, and multimedia content.",
-      date: "September 14-18, 2025",
+      date: "September 10-14, 2025",
       time: "10:00 AM - 8:00 PM",
       location: "SMX Convention Center, Mall of Asia Complex, Manila",
       category: "book-fair",
