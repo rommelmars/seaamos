@@ -116,22 +116,22 @@
 
 .testimonials-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px; /* Increased gap for better spacing */
 }
 
 .testimonial-card {
   background: #fff;
   border-radius: 15px;
-  padding: 30px;
+  padding: 35px; /* Slightly more padding for better readability */
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
   position: relative;
   display: flex;
   flex-direction: column;
   height: 100%;
-  opacity: 1; /* Change from 0 to 1 to make cards visible by default */
-  transform: translateY(0); /* Remove the initial transform */
+  opacity: 1;
+  transform: translateY(0);
   will-change: transform, opacity;
 }
 
@@ -139,6 +139,11 @@
   opacity: 1;
   transform: translateY(0);
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.testimonial-content {
+  flex-grow: 1;
+  margin-bottom: 20px;
 }
 
 /* Move author info to top */
@@ -171,10 +176,6 @@
   display: inline-block;
 }
 
-.testimonial-content {
-  flex-grow: 1;
-}
-
 .testimonial-quote {
   font-size: 1.1rem;
   line-height: 1.7;
@@ -197,7 +198,7 @@
 .testimonial-rating {
   display: flex;
   justify-content: center;
-  margin-top: 25px;
+  margin-bottom: 15px;
 }
 
 .star {
@@ -312,6 +313,81 @@
 
 .cta-button:hover svg {
   transform: translateX(5px);
+}
+
+/* Add these styles to the end of your Testimonials.css file */
+
+.testimonial-card {
+  background: #fff;
+  border-radius: 15px;
+  padding: 35px; /* Slightly more padding for better readability */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  opacity: 1;
+  transform: translateY(0);
+  will-change: transform, opacity;
+}
+
+.testimonial-content {
+  flex-grow: 1;
+  margin-bottom: 20px;
+}
+
+/* New footer container for ratings and button */
+.testimonial-footer {
+  margin-top: auto;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  padding-top: 20px;
+}
+
+.testimonial-rating {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.testimonial-visit-button-container {
+  text-align: center;
+  width: 100%;
+}
+
+.testimonial-visit-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #27ae60;
+  color: white;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 8px 20px;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 10px rgba(39, 174, 96, 0.2);
+  width: 80%;
+  max-width: 200px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  .testimonial-footer {
+    padding-top: 15px;
+  }
+  
+  .testimonial-rating {
+    margin-bottom: 12px;
+  }
+  
+  .testimonial-visit-button {
+    width: 100%;
+    max-width: 180px;
+    font-size: 0.9rem;
+    padding: 7px 16px;
+  }
 }
 
 /* Responsive Design */
@@ -430,6 +506,11 @@
     font-size: 1rem;
     padding: 12px 25px;
   }
+  
+  .testimonial-visit-button {
+    font-size: 0.9rem;
+    padding: 7px 16px;
+  }
 }
 
 /* Animation for elements */
@@ -522,7 +603,7 @@
 .testimonial-card {
   background: #fff;
   border-radius: 15px;
-  padding: 30px;
+  padding: 35px; /* Slightly more padding for better readability */
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
   position: relative;
@@ -541,14 +622,10 @@
 }
 
 /* Add staggered animations for cards */
-.testimonial-card:nth-child(3n+1) {
+.testimonial-card:nth-child(2n+1) {
   transition-delay: 0.1s;
 }
 
-.testimonial-card:nth-child(3n+2) {
+.testimonial-card:nth-child(2n+2) {
   transition-delay: 0.3s;
-}
-
-.testimonial-card:nth-child(3n+3) {
-  transition-delay: 0.5s;
 }

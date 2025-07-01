@@ -28,7 +28,8 @@ const Testimonials = () => {
       image: kayeImage,
       quote: "Everyone has been so amazingly accommodating of my financial ups and downs and they've all been so wonderful to work with, Addison especially. I love what I've been able to accomplish with everyone, it makes me so excited to see what the next couple of projects turn out to be. Especially for the Essex County Saga and Mourningstar because those are such important projects to me.",
       rating: 5,
-      featured: true
+      featured: true,
+      website: "https://example.com/kaye-joans"
     },
     {
       id: 2,
@@ -37,7 +38,8 @@ const Testimonials = () => {
       image: articaImage,
       quote: "When Sea Amos BYOP Program was recommended to me by Addison, I cautiously tested the water by having one book republished. Not only did publishing move along as promised. The print-on-demand Sea Amos Be Your Own Publisher Program allows the author access to a personal site where royalties are accumulated as book orders are printed at Ingram locations. On scheduled dates, royalties are deposited in the author's choice of bank and account. Authors can change the price of the book and the discounts to retail outlets. Distribution is worldwide. This is refreshing. I have had two more books published with them since, and two more books are in, shall we say \"the Barbie\" process. All hail Sea Amos AU.",
       rating: 5,
-      featured: true
+      featured: true,
+      website: "https://www.amazon.com/stores/Artica-Burr/author/B0BJFNFH7C?ref=ap_rdr&isDramIntegrated=true&shoppingPortalEnabled=true"
     },
     {
       id: 3,
@@ -46,7 +48,8 @@ const Testimonials = () => {
       image: jonathanImage,
       quote: "Hello, this is Minster, Jonathan Kithcart taking this time to let everybody know that Sea Amos has really been a blessing to me in my time of need. Thankfully, this company made me aware of the previous company that had felled through the cracks without letting me know about the dire situation at hand. For my previous publisher was not there when I needed them, concerning the publication of my previous book. Then one day, one hour, one minute last year I got a call from Kyle Peters. He explained to me the opportunities as a book writer that his company had for me concerning the ownership of a publishing company in my name. Wow, I just couldn't hardly believe it but it was true and Kyle has been there for me all the way. showing me all the possibilities, not only as a manager, but as a Christian friend and brother that I could trust, and that he could trust going forward with this project that has been anointed from high from the Head Of the church, Jesus Christ by the will of the Father and the Spirit of Truth.",
       rating: 5,
-      featured: true
+      featured: true,
+      website: "https://jkithcartcodeofsilence.com/"
     },
     {
       id: 4,
@@ -54,7 +57,8 @@ const Testimonials = () => {
       position: "Author of 'God's Foot is on the World'",
       image: ignatiusImage,
       quote: "Thank you so much Rebecca Lee. I'm delighted with the interview and the professional editing. May the Lord keep this door He has opened for the book on the mainstream media always open. I'm undeserving of His kindnesses.",
-      rating: 5
+      rating: 5,
+      website: "God’s Foot is on the World"
     },
     {
       id: 5,
@@ -62,7 +66,8 @@ const Testimonials = () => {
       position: "Author",
       image: moralesImage,
       quote: "Thanks to you, Rebecca Lee, for your incredible patience and dedication. Working with you has been an absolute pleasure, and I genuinely believe you are the best person I have ever had the privilege of collaborating with. You are the best person I have ever worked with. Thanks God for that. I hope you are able to help as many authors like me in the near future.",
-      rating: 5
+      rating: 5,
+      website: "https://example.com/morales-saintilus"
     },
     {
       id: 6,
@@ -70,7 +75,8 @@ const Testimonials = () => {
       position: "Author of 'The World's Greatest Possum Trainer'",
       image: bettyImage, // If you don't have this image yet, use a placeholder: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
       quote: "I would like to bring to Sea Amos management's attention the great experience I have had thus far with Sea Amos Business Solutions. They have made the transition from a do-nothing publisher to a business I can be proud of to market my children's book and, hopefully, more books in the Be Your Own Publish program. Without my Client Relations Officer, Edward Miller, I would never have gotten though all the nooks and crannies of the republishing of my book. Edward has helped to solve every problem, calm all my nerves and cheered me on. He is so patient and passionate about working with me and I believe I have made a good friend for life. I was so excited to get an interview with Kate Delaney through your program and enjoyed that wonderful experience. The work and changes to my book are so in tune with my audience of children, parents, grandparents and teachers. The illustration department did an outstanding job of portraying my animals in life-like pictures. I am so pleased that Edward made that first phone call and launched me on this path.",
-      rating: 5
+      rating: 5,
+      website: "https://www.amazon.com/Worlds-Greatest-Possum-Trainer-ebook/dp/B07933QT2W/ref=sr_1_1?crid=3M38C913DSQNL&dib=eyJ2IjoiMSJ9.NYM-rVfrhM7y0Jxg5GXRHg.70nxBfsAKjSvWwpMuORexUt2pR2TiC4wpO3aEAs0ShA&dib_tag=se&keywords=The+World%27s+Greatest+Possum+Trainer&qid=1751380771&s=digital-text&sprefix=%2Cdigital-text%2C776&sr=1-1"
     },
     {
       id: 7,
@@ -79,7 +85,8 @@ const Testimonials = () => {
       image: kennyImage,
       quote: "Hello everyone, I'm Kenny \"Sad Papaw\" Harmon. My multiple 5 star book Sad Papaw's Heritage has recently been revised by Sea Amos Business Solutions. Belle Moore and her associates did an excellent job of creating Kenny Harmon Publishers! A woman from California said \"I love the book\" and I believe everybody that likes colonial and pioneer history will also be impressed! Sincerely Kenny Harmon",
       rating: 5,
-      featured: true
+      featured: true,
+      website: "https://www.amazon.com/Sad-Papaws-Heritage-Kenny-Harmon/dp/1966954379/ref=sr_1_2?crid=2AYLSIO98DT4S&dib=eyJ2IjoiMSJ9.WDrHzw6oQOUjR2YNZWSm_BqBfIsR7T2-ZNOKNy4ZhMU.K9OVJNcN4IsjpTOpZoaFHGmSSFGbBJvlPqRedUX7fdI&dib_tag=se&keywords=Sad+Papaw%27s+Heritage&qid=1751380811&sprefix=whatever+happened+to+vida+boheme+%2Caps%2C831&sr=8-2"
     },
     {
       id: 8,
@@ -88,7 +95,8 @@ const Testimonials = () => {
       image: etharImage,
       quote: "I had the privilege of getting to know Keisha Rain before Sea Amos and she was who I was going to work with to be my own publisher. Even as CEO she was patiently waiting for me to be ready to get started when she introduced me to Sea Amos. When I was ready I trusted her integrity and honesty and let her introduce me to one of her Project Managers, Edward Miller. I have had a wonderful experience working with all the staff. They have helped me move forward with five books on the market by the end of this month and another one in the process. While they have set me up so I can do my own publishing, I will continue to use their services to help with future publishing. The team seems also always ready to discuss promotional opportunities and assist in this area. I have had 100% good experiences with Sea Amos and their staff. I would recommend anyone who wants to self publish look into their services.",
       rating: 5,
-      featured: true
+      featured: true,
+      website: "https://www.etharworldbooks.com/"
     }
   ];
 
@@ -207,9 +215,25 @@ const Testimonials = () => {
                     <FontAwesomeIcon icon={faQuoteLeft} />
                   </div>
                   <p className="testimonial-quote">{testimonial.quote}</p>
+                </div>
+                
+                {/* Move rating and button to their own container */}
+                <div className="testimonial-footer">
                   <div className="testimonial-rating">
                     {renderStars(testimonial.rating)}
                   </div>
+                  {testimonial.website && (
+                    <div className="testimonial-visit-button-container">
+                      <a 
+                        href={testimonial.website} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="testimonial-visit-button"
+                      >
+                        Visit Author <FontAwesomeIcon icon={faArrowRight} />
+                      </a>
+                    </div>
+                  )}
                 </div>
               </div>
             ))}
