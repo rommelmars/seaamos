@@ -1,12 +1,12 @@
 /* Main Styles for Testimonials Page */
 .testimonials-page {
   min-height: 100vh;
-  opacity: 1;
-  transition: opacity 0.5s ease;
+  opacity: 1; /* Always visible */
+  transition: opacity 0.3s ease;
 }
 
 .testimonials-page.loading {
-  opacity: 0;
+  opacity: 1; /* Change to 1 to make sure it's always visible */
 }
 
 /* Loader Styles */
@@ -50,8 +50,8 @@
   text-align: center;
   margin-top: 70px;
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transform: translateY(30px);
+  transition: opacity 1.2s ease-out, transform 1.2s ease-out;
 }
 
 .testimonials-hero.animate {
@@ -62,20 +62,15 @@
 .testimonials-hero-container {
   max-width: 900px;
   padding: 0 20px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.4s ease-out, transform 1.4s ease-out;
 }
 
-.hero-title {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  font-weight: 700;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.hero-subtitle {
-  font-size: 1.2rem;
-  max-width: 600px;
-  margin: 0 auto;
-  line-height: 1.5;
+.testimonials-hero.animate .testimonials-hero-container {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.2s;
 }
 
 /* Section Headers */
@@ -103,9 +98,9 @@
   padding: 80px 0;
   background-color: #f9f9f9;
   background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23213b2e' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  opacity: 1; /* Change from 0 to 1 to make section visible by default */
+  transform: translateY(0); /* Remove the initial transform */
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
 .testimonials-section.animate {
@@ -135,6 +130,15 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  opacity: 1; /* Change from 0 to 1 to make cards visible by default */
+  transform: translateY(0); /* Remove the initial transform */
+  will-change: transform, opacity;
+}
+
+.testimonial-card.animate {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
 /* Move author info to top */
@@ -461,4 +465,90 @@
   .testimonial-card:hover::before {
     opacity: 1;
   }
+}
+
+/* Update the hero section animation */
+.testimonials-hero {
+  background: linear-gradient(135deg, rgba(33, 59, 46, 0.9), rgba(39, 174, 96, 0.8)), url('../images/hero.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-align: center;
+  margin-top: 70px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+}
+
+.testimonials-hero.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.testimonials-hero-container {
+  max-width: 900px;
+  padding: 0 20px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.4s ease-out, transform 1.4s ease-out;
+}
+
+.testimonials-hero.animate .testimonials-hero-container {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.2s;
+}
+
+/* Update the testimonials section animation */
+.testimonials-section {
+  padding: 80px 0;
+  background-color: #f9f9f9;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23213b2e' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  opacity: 1; /* Change from 0 to 1 to make section visible by default */
+  transform: translateY(0); /* Remove the initial transform */
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.testimonials-section.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Update the testimonial card animations */
+.testimonial-card {
+  background: #fff;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  opacity: 1; /* Change from 0 to 1 to make cards visible by default */
+  transform: translateY(0); /* Remove the initial transform */
+  will-change: transform, opacity;
+}
+
+.testimonial-card.animate {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* Add staggered animations for cards */
+.testimonial-card:nth-child(3n+1) {
+  transition-delay: 0.1s;
+}
+
+.testimonial-card:nth-child(3n+2) {
+  transition-delay: 0.3s;
+}
+
+.testimonial-card:nth-child(3n+3) {
+  transition-delay: 0.5s;
 }

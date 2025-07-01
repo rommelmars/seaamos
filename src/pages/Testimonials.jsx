@@ -10,12 +10,14 @@ import jonathanImage from '../images/jonathan.png';
 import ignatiusImage from '../images/ignatius.png';
 import moralesImage from '../images/morales.png';
 import bettyImage from '../images/betty.jpeg';
-import kennyImage from '../images/kenny.png'; // Added import for Kenny's image
+import kennyImage from '../images/kenny.png';
+import etharImage from '../images/ethar.png';
 
 const Testimonials = () => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false); // Set to false by default
   const heroSectionRef = useRef(null);
   const testimonialsRef = useRef(null);
+  const testimonialCardRefs = useRef([]);
 
   // Combined testimonial data
   const testimonials = [
@@ -78,37 +80,74 @@ const Testimonials = () => {
       quote: "Hello everyone, I'm Kenny \"Sad Papaw\" Harmon. My multiple 5 star book Sad Papaw's Heritage has recently been revised by Sea Amos Business Solutions. Belle Moore and her associates did an excellent job of creating Kenny Harmon Publishers! A woman from California said \"I love the book\" and I believe everybody that likes colonial and pioneer history will also be impressed! Sincerely Kenny Harmon",
       rating: 5,
       featured: true
+    },
+    {
+      id: 8,
+      name: "DeWitt C. Tremaine",
+      position: "Fantasy Fiction Author, creator of EtharWorld",
+      image: etharImage,
+      quote: "I had the privilege of getting to know Keisha Rain before Sea Amos and she was who I was going to work with to be my own publisher. Even as CEO she was patiently waiting for me to be ready to get started when she introduced me to Sea Amos. When I was ready I trusted her integrity and honesty and let her introduce me to one of her Project Managers, Edward Miller. I have had a wonderful experience working with all the staff. They have helped me move forward with five books on the market by the end of this month and another one in the process. While they have set me up so I can do my own publishing, I will continue to use their services to help with future publishing. The team seems also always ready to discuss promotional opportunities and assist in this area. I have had 100% good experiences with Sea Amos and their staff. I would recommend anyone who wants to self publish look into their services.",
+      rating: 5,
+      featured: true
     }
   ];
 
-  // Animation handlers
+  // Scroll to top and set up animations when page loads
   useEffect(() => {
+    // Scroll to top when page loads
     window.scrollTo(0, 0);
     
+    console.log("Setting up animations for Testimonials page");
+    
+    // Add hero animation with a short delay
     setTimeout(() => {
-      setLoading(false);
       if (heroSectionRef.current) {
+        console.log("Animating hero section");
         heroSectionRef.current.classList.add('animate');
       }
-    }, 500);
+    }, 200);
+    
+    // Create observer for scroll animations with the same options as Services page
+    const observerOptions = {
+      threshold: window.innerWidth <= 768 ? 0.1 : 0.2,
+      rootMargin: window.innerWidth <= 768 ? '0px 0px -50px 0px' : '0px 0px -100px 0px'
+    };
     
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('animate');
+          console.log("Element in view:", entry.target);
+          setTimeout(() => {
+            entry.target.classList.add('animate');
+          }, 100);
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.2 });
+    }, observerOptions);
     
+    // Observe testimonials section
     if (testimonialsRef.current) {
       observer.observe(testimonialsRef.current);
     }
     
+    // Observe each testimonial card for staggered animation
+    testimonialCardRefs.current.forEach((card, index) => {
+      if (card) {
+        observer.observe(card);
+      }
+    });
+    
+    // Cleanup
     return () => {
       if (testimonialsRef.current) {
         observer.unobserve(testimonialsRef.current);
       }
+      
+      testimonialCardRefs.current.forEach((card) => {
+        if (card) {
+          observer.unobserve(card);
+        }
+      });
     };
   }, []);
 
@@ -124,15 +163,8 @@ const Testimonials = () => {
   };
 
   return (
-    <div className={`testimonials-page ${loading ? 'loading' : ''}`}>
+    <div className="testimonials-page">
       <Header />
-      
-      {/* Loading indicator */}
-      {loading && (
-        <div className="loader-container">
-          <div className="loader"></div>
-        </div>
-      )}
       
       {/* Hero Section */}
       <div className="testimonials-hero" ref={heroSectionRef}>
@@ -151,31 +183,35 @@ const Testimonials = () => {
           </div>
           
           <div className="testimonials-grid">
-            {testimonials.map(testimonial => (
-              <div className={`testimonial-card ${testimonial.featured ? 'featured' : ''}`} key={testimonial.id}>
-              {/* Author info moved above quote */}
-              <div className="testimonial-author top">
-                <img 
-                  src={testimonial.image} 
-                  alt={testimonial.name} 
-                  className="author-image" 
-                />
-                <div className="author-info">
-                  <h4 className="author-name">{testimonial.name}</h4>
-                  <p className="author-position">{testimonial.position}</p>
+            {testimonials.map((testimonial, index) => (
+              <div 
+                className={`testimonial-card ${testimonial.featured ? 'featured' : ''}`} 
+                key={testimonial.id}
+                ref={el => testimonialCardRefs.current[index] = el}
+              >
+                {/* Author info moved above quote */}
+                <div className="testimonial-author top">
+                  <img 
+                    src={testimonial.image} 
+                    alt={testimonial.name} 
+                    className="author-image" 
+                  />
+                  <div className="author-info">
+                    <h4 className="author-name">{testimonial.name}</h4>
+                    <p className="author-position">{testimonial.position}</p>
+                  </div>
+                </div>
+                
+                <div className="testimonial-content">
+                  <div className="testimonial-icon">
+                    <FontAwesomeIcon icon={faQuoteLeft} />
+                  </div>
+                  <p className="testimonial-quote">{testimonial.quote}</p>
+                  <div className="testimonial-rating">
+                    {renderStars(testimonial.rating)}
+                  </div>
                 </div>
               </div>
-              
-              <div className="testimonial-content">
-                <div className="testimonial-icon">
-                  <FontAwesomeIcon icon={faQuoteLeft} />
-                </div>
-                <p className="testimonial-quote">{testimonial.quote}</p>
-                <div className="testimonial-rating">
-                  {renderStars(testimonial.rating)}
-                </div>
-              </div>
-            </div>
             ))}
           </div>
         </div>
